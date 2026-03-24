@@ -79,7 +79,6 @@ int get_addrs_ioctl(char *interface, char if_hw_addr[], struct in_addr *if_ip_ad
         int sysctlparam[6] = {CTL_NET, PF_ROUTE, 0, 0, NET_RT_IFLIST, 0};
         size_t needed = 0;
         char *buf = NULL;
-        struct if_msghdr *msghdr = NULL;
         sysctlparam[5] = if_nametoindex(interface);
         if (sysctlparam[5] == 0) {
             fprintf(stderr, "Error getting hardware address for interface: %s\n", interface);
@@ -98,7 +97,7 @@ int get_addrs_ioctl(char *interface, char if_hw_addr[], struct in_addr *if_ip_ad
             free(buf);
             goto ENDHWADDR;
         }
-        msghdr = (struct if_msghdr *)buf;
+        struct if_msghdr *msghdr = (struct if_msghdr *)buf;
         memcpy(if_hw_addr, LLADDR((struct sockaddr_dl *)(buf + sizeof(struct if_msghdr) - sizeof(struct if_data) + sizeof(struct if_data))), 6);
         free(buf);
         got_hw_addr = 1;
