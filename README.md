@@ -1,7 +1,7 @@
 
 # udxtop
 
-`iftop` clone for UDX streams: It lists all UDX streams on an interface and shows their throughput.
+`udxtop` is an `iftop` clone for UDX streams: It lists all UDX streams on an interface and shows their average throughput for the last 2, 10 and 40 seconds.
 
 
 ## build
