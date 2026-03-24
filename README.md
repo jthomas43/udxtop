@@ -1,7 +1,8 @@
 
-# uxtop
+# udxtop
 
-packet capture tool for analyzing udx and dht-rpc traffic
+`iftop` clone for UDX streams: It lists all UDX streams on an interface and shows their throughput.
+
 
 ## build
 
